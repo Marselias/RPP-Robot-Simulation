@@ -1,6 +1,9 @@
 # RPP-Robot-Simulation
 Simulation of RPP robot with forward and inverse kinematics.
 
+## Requirements
+pygame, OpenGL
+
 ## Manual
 Use Up, Down, Left, Right, a, d to move robot.
 Use w to switch coordinates system, s to display avaliable workspace.
