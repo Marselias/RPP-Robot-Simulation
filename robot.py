@@ -95,12 +95,13 @@ colors = (
     (0, 1, 1)
 )
 
-def drawText(position, textString):
+
+def drawText(position, text_string):
     font = pygame.font.Font(None, 32)
-    textSurface = font.render(textString, True, (255, 255, 255, 255), (0, 0, 0, 255))
-    textData = pygame.image.tostring(textSurface, "RGBA", True)
+    text_surface = font.render(text_string, True, (255, 255, 255, 255), (0, 0, 0, 255))
+    text_data = pygame.image.tostring(text_surface, "RGBA", True)
     glRasterPos3d(*position)
-    glDrawPixels(textSurface.get_width(), textSurface.get_height(), GL_RGBA, GL_UNSIGNED_BYTE, textData)
+    glDrawPixels(text_surface.get_width(), text_surface.get_height(), GL_RGBA, GL_UNSIGNED_BYTE, text_data)
 
 
 def cube():
@@ -298,8 +299,8 @@ def main():
         if kinematics:
             x1 = float(input("x1 [-1:1]"))
             var1 = sqrt(1-pow(x1, 2))
-            y1 = float(input("y1"))
-            z1 = float(input("z1 max %.2f" % var1))
+            z1 = float(input("y1 [-1:1]"))
+            y1 = float(input("z1 max %.2f" % var1))
             kinematics = False
         x = cos(j2*pi/180)*(-j3+1)
         y = 1-j1
@@ -321,7 +322,7 @@ def main():
 
         j2_ = j2_ * 180/pi
         drawText((-9, 8, -5), "j1 = %.2f" % j1)
-        drawText((-9, 7, -5), "j2 = %.2f stopni" % j2)
+        drawText((-9, 7, -5), "j2 = %.2f degrees" % j2)
         drawText((-9, 6, -5), "j3 = %.2f" % j3)
         if move:
             j1 = j1_
@@ -330,7 +331,7 @@ def main():
             move = False
         else:
             drawText((-9, 2, -5), "j1_ = %.2f" % j1_)
-            drawText((-9, 1, -5), "j2_ = %.2f stopni" % j2_)
+            drawText((-9, 1, -5), "j2_ = %.2f degrees" % j2_)
             drawText((-9, 0, -5), "j3_ = %.2f" % j3_)
         if not shape:
             drawText((-9, 5, -5), "r = %.2f" % r)
